@@ -5,30 +5,31 @@
 
 <style>
 body {
-	background: #000 url(images/raspberries.jpg);
-	color: rgba(255,255,255,0.8);
-	cursor: none;
-	height: 100vh;
-	margin: 0;
+  background: #000 url(images/raspberries.jpg);
+  color: rgba(255,255,255,0.8);
+  cursor: none;
+  height: 100vh;
+  margin: 0;
 }
 
 #content {
 }
 
 button {
-	cursor: none;
+  cursor: none;
 }
+
 #clock {
-	text-align: right;
-	text-shadow: 0 0 20px #000;
+  text-align: right;
+  text-shadow: 0 0 20px #000;
 }
 
 #hours_minutes {
-	font-size: 7em;
+  font-size: 7em;
 }
 
 #seconds {
-	font-size: 3em;
+  font-size: 3em;
 }
 
 </style>
@@ -49,21 +50,21 @@ button {
 
 <script>
 function padDigits(number, digits) {
-	return Array(Math.max(digits - String(number).length + 1, 0)).join(0) + number;
+  return Array(Math.max(digits - String(number).length + 1, 0)).join(0) + number;
 }
 
 function updateClock() {
-	var now = new Date();
-	var hm = now.getHours() + ":" + padDigits(now.getMinutes(), 2);
-	var sec = padDigits(now.getSeconds(), 2);
-	document.querySelector("#hours_minutes").innerHTML = hm;
-	document.querySelector("#seconds").innerHTML = sec;
+  var now = new Date();
+  var hm = now.getHours() + ":" + padDigits(now.getMinutes(), 2);
+  var sec = padDigits(now.getSeconds(), 2);
+  document.querySelector("#hours_minutes").innerHTML = hm;
+  document.querySelector("#seconds").innerHTML = sec;
 }
 
 setInterval(updateClock, 1000);
 
 document.querySelector("#boop").addEventListener("click", function () {
-	alert("Booped!");
+  alert("Booped!");
 });
 
 </script>
