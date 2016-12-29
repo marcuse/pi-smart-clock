@@ -1,0 +1,65 @@
+<!doctype html>
+<html>
+<head>
+<title>Smart Clock</title>
+
+<style>
+body {
+	background: #000 url(images/raspberries.jpg);
+	color: rgba(255,255,255,0.8);
+	cursor: none;
+	height: 100%;
+}
+
+button {
+	cursor: none;
+}
+#clock {
+	text-align: right;
+	text-shadow: 0 0 20px #000;
+}
+
+#hours_minutes {
+	font-size: 7em;
+}
+
+#seconds {
+	font-size: 3em;
+}
+
+</style>
+</head>
+
+<body>
+
+<div id="clock">
+<span id="hours_minutes"></span>
+<span id="seconds"></span>
+</div>
+
+<button id="boop">Boop?</button>
+
+<script>
+function padDigits(number, digits) {
+	return Array(Math.max(digits - String(number).length + 1, 0)).join(0) + number;
+}
+
+function updateClock() {
+	var now = new Date();
+	var hm = padDigits(now.getHours(), 2) + ":" + padDigits(now.getMinutes(), 2);
+	var sec = padDigits(now.getSeconds(), 2);
+	document.querySelector("#hours_minutes").innerHTML = hm;
+	document.querySelector("#seconds").innerHTML = sec;
+}
+
+setInterval(updateClock, 1000);
+
+document.querySelector("#boop").addEventListener("click", function () {
+	alert("Booped!");
+});
+
+</script>
+
+</body>
+</html>
+
